@@ -26,7 +26,7 @@ int main_exit;
 
 // Structure for customer details
 struct customer{
-	char fname[20];
+    char fname[20];
     char lname[20];
     char fathname[20];
     char mothname[20];
@@ -40,15 +40,15 @@ struct customer{
 
 // Structure for Money Transfer
 struct money {
-	long long account_no;
-	float initial_money;
+    long long account_no;
+    float initial_money;
     long long account_no_2;
     float initial_money_2;
 }amount;
 
 //Structure for username and password
 struct userdetail {  //Done
-	char username[10];         
+    char username[10];         
     char password[20];
 }usdt;
 
@@ -67,8 +67,8 @@ void fordelay(int j){   //Done
 }
    
 void close_menu(){   //Done
-	system("cls");
-	gotoxy(30, 8);
+    system("cls");
+    gotoxy(30, 8);
     printf("!!!!!THANK YOU FOR YOUR TIME, PLEASE VISIT AGAIN!!!!!\n");
 }
 //Bank Clerk Menu
@@ -83,34 +83,34 @@ void emp_menu(){
     gotoxy(39, 4);
     printf("2. Modify Customer account\n");
     gotoxy(39, 5);
-	printf("3. Query Report\n");
-	gotoxy(39, 6);
-	printf("4. Credit Money\n");
-	gotoxy(39, 7);
-	printf("5. Debit Money\n");
-	gotoxy(39, 8);
-	printf("6. Exit");
-	printf("\n\nEnter your choice: ");
+    printf("3. Query Report\n");
+    gotoxy(39, 6);
+    printf("4. Credit Money\n");
+    gotoxy(39, 7);
+    printf("5. Debit Money\n");
+    gotoxy(39, 8);
+    printf("6. Exit");
+    printf("\n\nEnter your choice: ");
     scanf("%d",&choice);
     switch(choice){
         case 1:
-			add_del_acc();
+		add_del_acc();
         	break;
         case 2:
-			modify_cust();
+		modify_cust();
         	break;
         case 3:
-			query();
+		query();
         	break;
         case 4:
-			credit_money();
+		credit_money();
         	break;
         case 5:
-			debit_money();
+		debit_money();
         	break;
         case 6:
-			close_menu();
-			exit(0);
+		close_menu();
+		exit(0);
         	break;
         default:
         	printf("!!!PLEASE ENTER A VALID INPUT!!!");
@@ -130,24 +130,24 @@ void cust_menu(){
     gotoxy(39, 4);
     printf("2. Transfer Money");
     gotoxy(39, 5);
-	printf("3. Transaction Query");
-	gotoxy(39, 6);
-	printf("4. Exit");
-	printf("\n\nEnter your choice: ");
+    printf("3. Transaction Query");
+    gotoxy(39, 6);
+    printf("4. Exit");
+    printf("\n\nEnter your choice: ");
     scanf("%d",&choice);
     switch(choice){
         case 1:
-			profile();
+		profile();
         	break;
         case 2:
-			transfer_money();
+		transfer_money();
         	break;
         case 3:
-			transact_query();
+		transact_query();
         	break;
         case 4:
-			close_menu();
-			exit(0);
+		close_menu();
+		exit(0);
         	break;
         default:
         	printf("!!!PLEASE ENTER A VALID INPUT!!!");
@@ -165,7 +165,7 @@ int main(){  //Done
     	fordelay(10000000);
     	printf(".");
 	}
-	//Goto statement is sent here
+//Goto statement is sent here
     previous:
     system("cls");
     //Creating the homepage
@@ -204,7 +204,7 @@ int main(){  //Done
 void new_account(){   //Done
 	int i=0;
 	char temp_pwd; 
-    system("cls");
+        system("cls");
 	gotoxy(40,2);
 	printf("!!!!!CREATE ACCOUNT!!!!!");
 	gotoxy(0,3);
@@ -293,7 +293,7 @@ void bankEmp(){   //Done
 		else{
 			printf("\n\n!!!!!WRONG USERNAME OR PASSWORD!!!!!");
 			printf("\nEnter 1 to reenter or press 0 to exit:");
-    		scanf("%d", &main_exit);
+    			scanf("%d", &main_exit);
 			if(main_exit==1)
 				goto previous;
 			else
@@ -332,7 +332,7 @@ void cust_login(){   //Done
 		else{
 			printf("\n\n!!!!!WRONG USERNAME OR PASSWORD!!!!!");
 			printf("\nEnter 1 to REENTER or 0 to EXIT:");
-    		scanf("%d", &main_exit);
+    			scanf("%d", &main_exit);
 			if(main_exit==1)
 				goto previous;
 			else
@@ -361,34 +361,35 @@ void add_del_acc(){   //Done
 		printf("\nPlease select your preference...");
 		scanf("%d", &approve);
 		switch(approve){
+			//Account opening and storing the personal information in the bankcustdatabase.txt and for username and password bankppdatabase.txt
 			case 1:
 				ptr_pp = fopen("bankppdatabase.txt", "a");
 				ptr_idpwd=fopen("bankcustdatabase.txt", "a");
 				new_account();
-				fprintf(ptr_idpwd, "%s	%s	%lld\n", usdt.username, usdt.password, cust.account_no);
+				fprintf(ptr_idpwd, "%s	%s %lld\n", usdt.username, usdt.password, cust.account_no);
 				fprintf(ptr_pp,"%lld   %s %s   %s   %s   %s   %s   %d %d %d   %lld   %lld\n", cust.account_no, cust.fname, cust.lname, cust.fathname, cust.mothname, cust.address, cust.typeaccount, cust.date, cust.month, cust.year, cust.aadharnum, cust.pnumber);
 				accUnderProcess();
-	    		printf("\nPress 1 to go to main menu or 0 to exit...");
-	    		scanf("%d", &main_exit);
-	    		if(main_exit)
-	    			emp_menu();
-	    		else{
-	    			close_menu();
-	    			exit(0);
+	    			printf("\nPress 1 to go to main menu or 0 to exit...");
+	    			scanf("%d", &main_exit);
+	    			if(main_exit)
+	    				emp_menu();
+	    			else{
+	    				close_menu();
+	    				exit(0);
 				}
-	    		fclose(ptr_idpwd);
-	    		fclose(ptr_pp);
-	    		break;
+	    			fclose(ptr_idpwd);
+	    			fclose(ptr_pp);
+	    			break;
 	    		
-	    	case 2:
-	    		//Open the file to read and display in console
-	    		ptr_idpwd = fopen(file_name, "r");
-	    		while(!feof(ptr_idpwd)){
+	    		case 2:
+	    			//Open the file to read and display in the console
+		    		ptr_idpwd = fopen(file_name, "r");
+		    		while(!feof(ptr_idpwd)){
 					fgets(store,100,ptr_idpwd);
 					printf("%s", store);
 				}
 				fclose(ptr_idpwd);
-				//Reopen the file for copying, deleting and renaming
+				//Reopen the file for copying, deleting, and renaming
 				ptr_idpwd = fopen(file_name, "r");
 				ptr_temp = fopen(temp1, "w");
 				if(!ptr_idpwd && !ptr_temp){
@@ -401,8 +402,8 @@ void add_del_acc(){   //Done
 					fgets(str, 256, ptr_idpwd);
 					if(!feof(ptr_idpwd)){
 						ctr++;
-						if(ctr!=line_no)
-							fprintf(ptr_temp, "%s", str);
+					if(ctr!=line_no)
+						fprintf(ptr_temp, "%s", str);
 					}
 				}
 				//Closing the file
@@ -410,20 +411,20 @@ void add_del_acc(){   //Done
 				fclose(ptr_temp);
 				//Remove the original file
 				remove(file_name);
-				//Rename of the temp file to original file_name
+				//Rename the temp file to the original file_name
 				rename(temp1, file_name);
 				printf("\n!!!ACCOUNT HAS BEEN SUCCESSFULLY DELETED FROM THE RECORDS!!!\n");
-	    		printf("\n\nPress 1 MAIN MENU or 0 to EXIT: ");
+	    			printf("\n\nPress 1 MAIN MENU or 0 to EXIT: ");
 				scanf("%d", &main_exit);
 				if(main_exit)
-	    			emp_menu();
-	    		else
-	    			exit(0);
-	    		break;
-	    	default:
-	    		printf("PLEASE ENTER A VALID CHOICE");
-	    		fordelay(100000000);
-	    		goto previous;
+		    			emp_menu();
+		    		else
+		    			exit(0);
+		    			break;
+	    		default:
+		    		printf("PLEASE ENTER A VALID CHOICE");
+				fordelay(100000000);
+	    			goto previous;
 		}
 	}
 }
@@ -442,6 +443,7 @@ void profile(){    //Done
 	}
 	//fread(address of structure, size of structure, times to call struct, ptr)
 	while(!feof(ptr_pp) && flag==0){ 
+		// We are using '&' operator with integers so that we can pass the memory address to fscanf but for strings we do not need that as they are already pointing to the memory location
 		fscanf(ptr_pp,"%lld	%s %s   %s   %s   %s   %s   %d %d %d   %lld   %lld",&cust.account_no, cust.fname, cust.lname, cust.fathname, cust.mothname, cust.address, cust.typeaccount, &cust.date, &cust.month, &cust.year, &cust.aadharnum, &cust.pnumber);
 		if(cust.account_no==accno){
 			flag=1;
@@ -452,13 +454,13 @@ void profile(){    //Done
 		printf("\n!!!Data not found!!!");
 	}
 	printf("\nEnter 1 to REENTER or  0 to EXIT:");
-    		scanf("%d", &main_exit);
-			if(main_exit==1)
-				goto previous;
-			else{
-				close_menu();
-				exit(0);
-			}
+    	scanf("%d", &main_exit);
+	if(main_exit==1)
+		goto previous;
+	else{
+		close_menu();
+		exit(0);
+	}
 	fclose(ptr_pp);
 }
 
@@ -473,13 +475,13 @@ void transact_query(){   //Done
 	scanf("%s", transact);
 	fprintf(ptr_transact,"%s\n", transact);
 	printf("\nEnter 1 for MAIN MENU or 0 to EXIT:");
-    scanf("%d", &main_exit);
-			if(main_exit==1)
-				cust_menu();
-			else{
-				close_menu();
-				exit(0);
-			}
+    	scanf("%d", &main_exit);
+	if(main_exit==1)
+		cust_menu();
+	else{
+		close_menu();
+		exit(0);
+	}
 	fclose(ptr_transact);	
 }
 
@@ -515,8 +517,10 @@ void modify_cust(){
 					//Store data in the file
 					fprintf(ptr_temp,"%lld %s %s %s %s %s %s %d %d %d %lld %lld\n", cust.account_no, cust.fname, cust.lname, cust.fathname, cust.mothname, cust.address, cust.typeaccount, cust.date, cust.month, cust.year, cust.aadharnum, cust.pnumber);	
 				}
-				else
+				else{
+					//for most data types used with fprintf, including strings, the & operator is not required because the variables themselves already hold the memory addresses
 					fprintf(ptr_temp,"%lld %s %s %s %s %s %s %d %d %d %lld %lld\n", cust.account_no, cust.fname, cust.lname, cust.fathname, cust.mothname, cust.address, cust.typeaccount, cust.date, cust.month, cust.year, cust.aadharnum, cust.pnumber);
+				}
 			}
 			//File Close
 			fclose(ptr_pp);
@@ -525,13 +529,13 @@ void modify_cust(){
 			rename(temp2,file_name);
 			
 			printf("\nPress 1 to go to main menu or 0 to exit...");
-	    	scanf("%d", &main_exit);
-	    	if(main_exit)
-	    		emp_menu();
-	    	else{
-	    		close_menu();
-	    		exit(0);
-			}
+	    		scanf("%d", &main_exit);
+	    		if(main_exit)
+	    			emp_menu();
+	    		else{
+		    		close_menu();
+		    		exit(0);
+				}
 			break;
 		case 2:
 			ptr_pp=fopen(file_name, "r"); 
@@ -562,17 +566,17 @@ void modify_cust(){
 			rename(temp2,file_name);
 			
 			printf("\nPress 1 to go to main menu or 0 to exit...");
-	    	scanf("%d", &main_exit);
-	    	if(main_exit)
-	    		emp_menu();
-	    	else{
-	    		close_menu();
-	    		exit(0);
-			}
-			break;
-		default:
-			printf("!!!PLEASE ENTER A VALID INPUT!!!");
-			goto previous;
+		    	scanf("%d", &main_exit);
+		    	if(main_exit)
+		    		emp_menu();
+		    	else{
+		    		close_menu();
+		    		exit(0);
+				}
+				break;
+			default:
+				printf("!!!PLEASE ENTER A VALID INPUT!!!");
+				goto previous;
 			
 	}
 	      
@@ -602,13 +606,13 @@ void query(){  //Done
 	remove("transactionquery.txt");
 	
 	printf("\nEnter 1 for MAIN MENU or 0 to EXIT:");
-    scanf("%d", &main_exit);
-			if(main_exit==1)
-				cust_menu();
-			else{
-	    		close_menu();
-	    		exit(0);
-			}
+    	scanf("%d", &main_exit);
+	if(main_exit==1)
+		cust_menu();
+	else{
+		close_menu();
+	    	exit(0);
+	}
 }
 //Add money to the account
 void credit_money(){    	//Done
@@ -620,7 +624,7 @@ void credit_money(){    	//Done
 	ptr_temp=fopen(temp3,"w");
 	if(ptr_money==NULL)
 		printf("!!!FILE NOT FOUND!!!");
-		
+
 	system("cls");
 	printf("\n\nEnter your account number:\t");
 	scanf("%lld", &account_no);
@@ -633,7 +637,7 @@ void credit_money(){    	//Done
 			amount.initial_money+=deposit;
 			printf("Your account now contains amount:\t %.2f\n", amount.initial_money);
 			//Store data in the file
-			fprintf(ptr_temp,"%lld %.2f ", amount.account_no, amount.initial_money);	
+			fprintf(ptr_temp,"%lld %.2f ", amount.account_no, amount.initial_money);
 		}
 		else
 			fprintf(ptr_temp,"%lld %.2f ", amount.account_no, amount.initial_money);
@@ -644,10 +648,10 @@ void credit_money(){    	//Done
 		remove(file_name);
 		rename(temp3,file_name);
 		printf("\nPress 1 to go to main menu or 0 to exit...");
-	    scanf("%d", &main_exit);
-	    if(main_exit)
-	    	emp_menu();
-	    else{
+		scanf("%d", &main_exit);
+	    	if(main_exit)
+	    		emp_menu();
+	    	else{
 	    		close_menu();
 	    		exit(0);
 		}
