@@ -12,8 +12,13 @@
     View Customer Details, Transfer Money, Query/Report on his/her Transaction
 
 ## Software Required
-- Dev C or VS code
+- Dev C or VSCode(If you use the VScode then instead of Terminal use Command Prompt in VSCode)
+- Command Prompt
 - Notepad (acts as a database)
+
+### To run C program in command prompt
+gcc Project_name.c
+Project_name
 
 ## Concepts Used
 - Structures
