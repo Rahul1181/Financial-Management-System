@@ -253,7 +253,9 @@ void new_account(){   //Done
 	    i++;
 	    printf("*");
 	}
-	usdt.password[i]=NULL;
+	//usdt.password[i]=NULL;   Problem here is character datatype is trying to store Null pointer value
+	usdt.password[i]='\0';
+	
 }
 	
 void accUnderProcess(){   //Done
